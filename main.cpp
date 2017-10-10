@@ -2,6 +2,8 @@
 
 using namespace std;
 
+
+//Funcion que inicia las matrices de manera recursiva
 void iniciar_Mat(int**matriz,int filas,int columnas,int i=0){
     if(i==filas){
         return;
@@ -10,6 +12,7 @@ void iniciar_Mat(int**matriz,int filas,int columnas,int i=0){
     return iniciar_Mat(matriz,filas,columnas,i+1);
 }
 
+//Funcion que inicia todos los valores de la matriz en 0
 void clean(int**matriz,int filas,int columnas,int i=0,int j=0){
     if(j==columnas){
         return clean(matriz,filas,columnas,i+1,0);
@@ -21,6 +24,7 @@ void clean(int**matriz,int filas,int columnas,int i=0,int j=0){
     return clean(matriz,filas,columnas,i,j+1);
 }
 
+//Funcion que me permite ingresar los valores de las matrices
 void elementos(int**matriz,int filas,int columnas,int i=0, int j=0){
     if(j==columnas){
         return elementos(matriz,filas,columnas,i+1,0);
@@ -38,6 +42,8 @@ void elementos(int**matriz,int filas,int columnas,int i=0, int j=0){
     return elementos(matriz,filas,columnas,i,j+1);
 }
 
+
+//Funcion que compara los valores de 2 matrices y solo imprime los mayores
 void mayor(int**matrizA, int**matrizB, int**matrizC,int filas, int columnas,int i=0, int j=0){
     if(j==columnas){
         return mayor(matrizA,matrizB,matrizC,filas,columnas,i+1,0);
@@ -50,6 +56,7 @@ void mayor(int**matrizA, int**matrizB, int**matrizC,int filas, int columnas,int 
 
 }
 
+//Funcion que compara los valores de 2 matrices y solo imprime los menores
 void menor(int**matrizA, int**matrizB, int**matrizC,int filas, int columnas,int i=0, int j=0){
     if(j==columnas){
         return menor(matrizA,matrizB,matrizC,filas,columnas,i+1,0);
@@ -62,6 +69,7 @@ void menor(int**matrizA, int**matrizB, int**matrizC,int filas, int columnas,int 
 
 }
 
+//Funcion que calcula el prmedio entre cada uno de los valores de 2 matrices
 void promedio(int**matrizA, int**matrizB, int**matrizC,int filas, int columnas,int i=0, int j=0){
     if(j==columnas){
         return promedio(matrizA,matrizB,matrizC,filas,columnas,i+1,0);
@@ -73,6 +81,7 @@ void promedio(int**matrizA, int**matrizB, int**matrizC,int filas, int columnas,i
     return promedio(matrizA,matrizB,matrizC,filas,columnas,i,j+1);
 }
 
+//Funcion que calcula la suma de 2 matrices
 void suma(int**matrizA, int**matrizB, int**matrizC,int filas, int columnas,int i=0, int j=0){
     if(j==columnas){
         return suma(matrizA,matrizB,matrizC,filas,columnas,i+1,0);
@@ -84,6 +93,7 @@ void suma(int**matrizA, int**matrizB, int**matrizC,int filas, int columnas,int i
     return suma(matrizA,matrizB,matrizC,filas,columnas,i,j+1);
 }
 
+//Funcion que calcula la resta de 2 matrices
 void resta(int**matrizA, int**matrizB, int**matrizC,int filas, int columnas,int i=0, int j=0){
     if(j==columnas){
         return resta(matrizA,matrizB,matrizC,filas,columnas,i+1,0);
@@ -95,6 +105,7 @@ void resta(int**matrizA, int**matrizB, int**matrizC,int filas, int columnas,int 
     return resta(matrizA,matrizB,matrizC,filas,columnas,i,j+1);
 }
 
+//Funcion que calcula la multiplicacion entre 2 matrices
 void multi(int**matrizA, int**matrizB, int**matrizC,int filas1, int columnas1,int filas2,int columnas2,int i=0, int j=0,int k =0){
     if(filas2!=columnas1){
         cout<<"Error. Dimensiones incorrectas en las matrices"<<endl;
@@ -114,6 +125,7 @@ void multi(int**matrizA, int**matrizB, int**matrizC,int filas1, int columnas1,in
 
 }
 
+//Funcion que imprime una matriz
 void printMatriz(int**matriz,int filas,int columnas,int i=0, int j=0){
     if(j==columnas){
         cout<<endl;
@@ -126,6 +138,7 @@ void printMatriz(int**matriz,int filas,int columnas,int i=0, int j=0){
     return printMatriz(matriz,filas,columnas,i,j+1);
 }
 
+//Funcion que borra el espacio asignado a una matriz
 void borrarMatrices(int**matriz,int filas,int i=0){
     if(i==filas){
         delete []matriz;
@@ -137,6 +150,7 @@ void borrarMatrices(int**matriz,int filas,int i=0){
 
 int main()
 {
+    //Tamaño de las matrices
     int filas1,columnas1,filas2,columnas2;
 
     cout<<"Ingresa el numero de filas de la primera matriz"<<endl;
@@ -148,6 +162,7 @@ int main()
     cout<<"Ingresa el numero de columnas de la segunda matriz"<<endl;
     cin>>columnas2;
 
+    //se inicializan las matrices
     int**matrizA= new int*[filas1];
     int**matrizB= new int*[filas2];
 
@@ -155,11 +170,14 @@ int main()
     iniciar_Mat(matrizA,filas1,columnas1);
     iniciar_Mat(matrizB,filas2,columnas2);
 
+
+    //Se ingresan los elementos de las matrices
     cout<<"Ingresa los elementos de la primera Matriz"<<endl;
     elementos(matrizA,filas1,columnas1);
     cout<<"Ingresa los elementos de la segunda Matriz"<<endl;
     elementos(matrizB,filas2,columnas2);
 
+    //Se selecciona la operacion
     cout<<"Selecciona la Operacion"<<endl;
     cout<<"1 --> Mayores Elementos"<<endl;
     cout<<"2 --> Menores Elementos"<<endl;
@@ -169,10 +187,12 @@ int main()
     cout<<"6 --> Multiplicacion de Matrices"<<endl;
 
 
+    //Se crea un puntero a funcion para las primeras 5 operciones
     void (*ptrOperador)(int**,int**,int**,int,int,int,int);
     int operacion=0;
     cin>>operacion;
 
+    //se apunta a la funcion especificada
     if(operacion==1){
         ptrOperador=mayor;
     }
@@ -189,6 +209,7 @@ int main()
         ptrOperador=resta;
     }
 
+    //Se comprueba que las matrices tengan el tamaño correcto
     if(operacion!=6){
         if(filas1!=filas2 || columnas1!=columnas2){
             cout<<"Error en las dimensiones. Las matrices deben ser iguales"<<endl;
@@ -204,7 +225,7 @@ int main()
     }
 
 
-
+    //Se hace una excepcion para la multiplicacion ya que no tiene el mismo prototipo que el resto
     if(operacion==6){
         int**matrizC= new int*[columnas1];
         iniciar_Mat(matrizC,filas1,columnas2);
