@@ -34,7 +34,7 @@ void elementos(int**matriz,int filas,int columnas,int i=0, int j=0){
     }
 
     int elemento;
-    //cout<<"Ingresar el valor ["<<i<<"] ["<<j<<"] :"<<endl;
+    cout<<"Ingresar el valor ["<<i<<"] ["<<j<<"] :"<<endl;
     cin>>elemento;
 
     *(*(matriz+i)+j)=elemento;
@@ -150,7 +150,7 @@ void borrarMatrices(int**matriz,int filas,int i=0){
 
 int main()
 {
-    //Tamaño de las matrices
+    //TamaÃ±o de las matrices
     int filas1,columnas1,filas2,columnas2;
 
     cout<<"Ingresa el numero de filas de la primera matriz"<<endl;
@@ -209,7 +209,7 @@ int main()
         ptrOperador=resta;
     }
 
-    //Se comprueba que las matrices tengan el tamaño correcto
+    //Se comprueba que las matrices tengan el tamaÃ±o correcto
     if(operacion!=6){
         if(filas1!=filas2 || columnas1!=columnas2){
             cout<<"Error en las dimensiones. Las matrices deben ser iguales"<<endl;
@@ -220,6 +220,7 @@ int main()
         int**matrizC= new int*[columnas1];
         iniciar_Mat(matrizC,filas1,columnas1);
         ptrOperador(matrizA,matrizB,matrizC,filas1,columnas1,0,0);
+        cout<<"Matriz Resultante"<<endl;
         printMatriz(matrizC,filas1,columnas1);
         borrarMatrices(matrizC,filas1);
     }
@@ -231,6 +232,7 @@ int main()
         iniciar_Mat(matrizC,filas1,columnas2);
         clean(matrizC,filas1,columnas2);
         multi(matrizA,matrizB,matrizC,filas1,columnas1,filas2,columnas2);
+        cout<<"Matriz Resultante"<<endl;
         printMatriz(matrizC,filas1,columnas2);
         borrarMatrices(matrizC,filas1);
     }
@@ -242,3 +244,4 @@ int main()
     return 0;
 
 }
+
